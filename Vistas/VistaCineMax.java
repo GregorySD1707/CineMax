@@ -3,18 +3,22 @@ package Vistas;
 import java.util.List;
 import java.util.Scanner;
 
-import Controladores.ControladorPaginaPrincipal;
+import Controladores.ControladorCineMax;
 
-public class VistaPaginaPrincipal {
+public class VistaCineMax {
 
-    ControladorPaginaPrincipal controladorPaginaPrincipal;
+    //ControladorCineMax controladorPaginaPrincipal;
     private Scanner scanner = new Scanner(System.in);
 
-    public VistaPaginaPrincipal(ControladorPaginaPrincipal controladorPaginaPrincipal){
-        this.controladorPaginaPrincipal = controladorPaginaPrincipal;
+    //public VistaCineMax(ControladorCineMax controladorPaginaPrincipal){
+    //    this.controladorPaginaPrincipal = controladorPaginaPrincipal;
+    //}
+
+    public VistaCineMax(){
+
     }
 
-    public void mostrar(List<String> opciones) {
+    public boolean mostrar(List<String> opciones) {
         System.out.println("Bienvenido a CineMax");
         System.out.println("Seleccione una opción:");
         for (String opcion : opciones) {
@@ -42,12 +46,14 @@ public class VistaPaginaPrincipal {
                 break;
             case 6:
                 System.out.println("Saliendo del sistema...");
-                controladorPaginaPrincipal.cerrarPaginaPrincipal();
-                break;
+                //controladorPaginaPrincipal.cerrarPaginaPrincipal();
+                return true; // Indica que se debe cerrar la aplicación
             default:
                 System.out.println("Opción no válida. Por favor, intente de nuevo.");
                 break;
+            
         }
+        return false; // Indica que la aplicación no se cierra
     }
 
 }
