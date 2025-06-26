@@ -2,7 +2,6 @@ package Servicios;
 
 import java.util.List;
 
-import Controladores.VentaDeBoletos.ControladorBoleto;
 import Modelos.CineMax;
 import Vistas.VistaCineMax;
 
@@ -22,8 +21,6 @@ public class ServicioCineMax {
                     break;
                 case 3:
                     //Aquí va la gestión de boletos...
-                    ControladorBoleto controladorBoleto = new ControladorBoleto();
-                    controladorBoleto.gestionarBoletos();
 
                     
                     break;
@@ -36,7 +33,7 @@ public class ServicioCineMax {
                 default:
                     break;
             }
-        }while(cerrado == 6);
+        }while(cerrado != 6);
         return cerrado;
     }
 
