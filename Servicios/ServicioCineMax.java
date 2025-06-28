@@ -2,10 +2,16 @@ package Servicios;
 
 import java.util.List;
 
+import Controladores.VentaDeBoletos.ControladorVentaDeBoletos;
 import Modelos.CineMax;
 import Vistas.VistaCineMax;
 
 public class ServicioCineMax {
+    ControladorVentaDeBoletos controladorVentaDeBoletos;
+
+    public ServicioCineMax() {
+        controladorVentaDeBoletos = new ControladorVentaDeBoletos();
+    }
 
     public int manejarInicio(CineMax cineMax, VistaCineMax vistaPaginaPrincipal) {
         List<String> opciones = cineMax.obtenerOpciones();
@@ -21,8 +27,7 @@ public class ServicioCineMax {
                     break;
                 case 3:
                     //Aquí va la gestión de boletos...
-
-                    
+                    controladorVentaDeBoletos.gestionarVentaDeBoletos("Controlador de Cartelera", "Controlador de Consulta de Salas");
                     break;
                 case 4:
                     //Aquí va la gestión de empleados...

@@ -6,8 +6,7 @@ public class CalculadorIVA implements CalculadorImpuesto {
 
     @Override
     public double calcularImpuesto(double subTotal) {
-        return subTotal + (subTotal*IVA_TASA); // Calcula el IVA sobre el total de los productos
+        return subTotal*IVA_TASA; // Calcula el IVA sobre el total de los productos
     }
 
-    
 }

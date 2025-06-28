@@ -1,26 +1,39 @@
 package Controladores.VentaDeBoletos;
 
+import java.util.List;
+
 import Modelos.VentaDeBoletos.Cliente;
 import Modelos.VentaDeBoletos.Factura;
+import Modelos.VentaDeBoletos.Producto;
 
 public class ControladorVentaDeBoletos {
 
-    public void gestionarVentaDeBoletos(){
+    ControladorAsignadorButacas controladorAsignadorButacas;
+    ControladorAsignadorFuncion controladorAsignadorFuncion;
+    ControladorBoleto controladorBoleto;
+    ControladorFacturacion controladorFacturacion;
+
+    public void gestionarVentaDeBoletos(String controladorCartelera, String controladorDeConsultaSalas){
         System.out.println("Módulo de Venta de Boletos iniciado.\n");
-        
-        ControladorBoleto controladorBoleto = new ControladorBoleto();
-        
-        //String funcion = "Función de Ejemplo"; // GRUPO A
-        //List<String> butacas = List.of("A1", "A2", "B1", "B2"); // GRUPO B
 
-        //List<Producto> boletos = controladorBoleto.generarBoleto(funcion, butacas);
+        controladorAsignadorButacas = new ControladorAsignadorButacas();
+        controladorAsignadorFuncion = new ControladorAsignadorFuncion();
+        controladorBoleto = new ControladorBoleto();
 
-        ControladorFacturacion controladorFacturacion = new ControladorFacturacion();
-//
-        //Cliente cliente = new Cliente("Juan","Pérez","12345678","juan.perez@example.com");
-        //Factura factura = controladorFacturacion.generarFactura(boletos, cliente);
+        //controladorCartelera = "Controlador de Cartelera"; // Simulación de controlador de cartelera, GRUPO A
+        String funcion = controladorAsignadorFuncion.asignarFuncion(controladorCartelera); // GRUPO A
 
-        //System.out.println("Factura generada:");
-        //System.out.println(factura);
+        //controladorDeConsultaSalas = "Controlador de Consulta de Salas"; // Simulación de controlador de consulta de salas, GRUPO B
+        List<String> butacas = controladorAsignadorButacas.asignarButacas(controladorDeConsultaSalas, funcion); // GRUPO B
+
+        List<Producto> boletos = controladorBoleto.generarBoleto(funcion, butacas);
+
+        controladorFacturacion = new ControladorFacturacion();
+
+        Cliente cliente = new Cliente("Juan","Pérez","12345678","juan.perez@example.com");
+        Factura factura = controladorFacturacion.generarFactura(boletos, cliente);
+
+        System.out.println("Factura generada:");
+        System.out.println(factura);
     }
 }

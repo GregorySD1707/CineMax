@@ -49,7 +49,7 @@ public class Factura {
     }
 
     public void calcularTotal(CalculadorImpuesto calculadorImpuesto) {
-        this.total =  calculadorImpuesto.calcularImpuesto(subTotal);
+        this.total =  subTotal + calculadorImpuesto.calcularImpuesto(subTotal);
     }
 
     @Override
