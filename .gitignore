@@ -1,0 +1,29 @@
+# Archivos de compilación
+/out/
+target/
+build/
+bin/
+
+# Archivos del IDE IntelliJ
+*.iml
+.idea/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos temporales o logs
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Archivos generados por Scene Builder (temporales)
+*.goutputstream-*
+
+# Archivos específicos de Maven o Gradle (si los usas)
+.mvn/
+.gradle/
+
+# Archivos de Visual Studio Code
+.vscode/
