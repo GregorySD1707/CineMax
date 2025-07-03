@@ -1,6 +1,6 @@
 package com.cinemax.moduloboletos.Controladores.UI.VentaDeBoletos;
 
-import com.cinemax.moduloboletos.Controladores.UI.Shared.AlertController;
+import com.cinemax.moduloboletos.Controladores.UI.Shared.ControllerAlert;
 import com.cinemax.moduloboletos.Modelos.VentaDeBoletos.Producto;
 import com.cinemax.moduloboletos.Servicios.VentaDeBoletos.ServicioGeneradorBoleto;
 import com.cinemax.moduloboletos.Util.ThemeManager;
@@ -19,14 +19,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.Window;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoletoController {
+public class ControllerBoleto {
 
     // --- Lógica de Negocio ---
     private final ServicioGeneradorBoleto servicioBoleto = new ServicioGeneradorBoleto();
@@ -137,10 +136,10 @@ public class BoletoController {
             // 3. Cargar la siguiente pantalla y pasarle los boletos
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/cinemax/moduloboletos/Vistas/VentaDeBoletos/resumen-view.fxml"));
             Parent root = loader.load();
-            ResumenController resumenController = loader.getController();
+            ControllerResumen controllerResumen = loader.getController();
 
-            resumenController.initData(this.pelicula, this.funcion, boletosGenerados);
-            resumenController.setPreviousScene(continueButton.getScene());
+            controllerResumen.initData(this.pelicula, this.funcion, boletosGenerados);
+            controllerResumen.setPreviousScene(continueButton.getScene());
 
             Stage stage = (Stage) continueButton.getScene().getWindow();
             Scene scene = new Scene(root);
@@ -160,7 +159,7 @@ public class BoletoController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/cinemax/moduloboletos/Vistas/Shared/alert-view.fxml"));
             Parent root = loader.load();
-            AlertController controller = loader.getController();
+            ControllerAlert controller = loader.getController();
             controller.setData(title, message);
             Stage alertStage = new Stage();
             alertStage.initOwner(continueButton.getScene().getWindow());

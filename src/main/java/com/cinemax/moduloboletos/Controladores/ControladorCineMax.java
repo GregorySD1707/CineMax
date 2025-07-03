@@ -1,6 +1,6 @@
 package com.cinemax.moduloboletos.Controladores;
 
-import com.cinemax.moduloboletos.App;
+import com.cinemax.moduloboletos.Main;
 import com.cinemax.moduloboletos.Modelos.CineMax;
 import com.cinemax.moduloboletos.Servicios.ServicioCineMax;
 import com.cinemax.moduloboletos.Vistas.VistaCineMax;
@@ -22,10 +22,11 @@ public class ControladorCineMax {
     }
 
     public void iniciarModuloVentaBoletos(){
+        // En un futuro, estos datos vendrán de los otros módulos
         String peliculaSeleccionada = "Como entrenar a tu Dragon";
-        String salaSeleccionada = "Sala 7";
+        String salaSeleccionada = "Sala 7 - Dom 29 - 13:40";
 
-        App.launchWithData(peliculaSeleccionada, salaSeleccionada);
+        Main.launchWithData(peliculaSeleccionada, salaSeleccionada);
     }
 
     public void cerrarPaginaPrincipal() {

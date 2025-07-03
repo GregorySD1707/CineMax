@@ -1,6 +1,6 @@
 package com.cinemax.moduloboletos.Controladores.UI.VentaDeBoletos;
 
-import com.cinemax.moduloboletos.Controladores.UI.Shared.AlertController;
+import com.cinemax.moduloboletos.Controladores.UI.Shared.ControllerAlert;
 import com.cinemax.moduloboletos.Modelos.VentaDeBoletos.*;
 import com.cinemax.moduloboletos.Servicios.VentaDeBoletos.ServicioFacturacion;
 import com.cinemax.moduloboletos.Util.ThemeManager;
@@ -17,13 +17,12 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.Window;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class DatosClienteController {
+public class ControllerDatosCliente {
 
     // --- Lógica de Negocio ---
     private final ServicioFacturacion servicioFacturacion = new ServicioFacturacion();
@@ -114,7 +113,7 @@ public class DatosClienteController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/cinemax/moduloboletos/Vistas/Shared/alert-view.fxml"));
             Parent root = loader.load();
-            AlertController controller = loader.getController();
+            ControllerAlert controller = loader.getController();
             controller.setData(title, message);
             Stage alertStage = new Stage();
             alertStage.initOwner(finalizarButton.getScene().getWindow());
