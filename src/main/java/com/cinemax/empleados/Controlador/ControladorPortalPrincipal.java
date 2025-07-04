@@ -93,10 +93,22 @@ public class ControladorPortalPrincipal {
     }
 
         @FXML
-        private void onGestionUsuarios() {
+        private void onGestionUsuarios(ActionEvent event) {
             System.out.println("Navegar a Gestión de Usuarios");
-            // TODO: Implementar navegación a la pantalla de gestión de usuarios
-        }
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/PantallaGestionDeUsuarios.fxml"));
+            try {
+                Parent root = loader.load();
+
+                // Obtener el Stage actual desde el botón o cualquier nodo
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setTitle("Portal del Administrador");
+                stage.setScene(new Scene(root));
+                stage.show();
+
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }        }
 
         @FXML
         private void onVerReportes() {

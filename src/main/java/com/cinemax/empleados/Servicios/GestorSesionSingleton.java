@@ -5,7 +5,6 @@ import com.cinemax.empleados.Modelo.Entidades.Usuario;
 import com.cinemax.empleados.Modelo.Persistencia.UsuarioDAO;
 
 import com.cinemax.empleados.Modelo.Entidades.Rol;
-import com.cinemax.empleados.Servicios.GestorRoles;
 
 public class GestorSesionSingleton {
     private static GestorSesionSingleton gestorSesion;

@@ -140,6 +140,10 @@ public class Usuario {
         return rol;
     }
 
+    public String getNombreRol() {
+        return rol.getNombre();
+    }
+
     public void setRol(Rol rol) {
         this.rol = rol;
     }
