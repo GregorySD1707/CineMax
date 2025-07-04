@@ -19,15 +19,6 @@ public class ControladorVentaDeBoletos {
         controladorAsignadorButacas = new ControladorAsignadorButacas();
         controladorAsignadorFuncion = new ControladorAsignadorFuncion();
         controladorBoleto = new ControladorBoleto();
-
-        //controladorCartelera = "Controlador de Cartelera"; // Simulación de controlador de cartelera, GRUPO A
-        String funcion = controladorAsignadorFuncion.asignarFuncion(controladorCartelera); // GRUPO A
-
-        //controladorDeConsultaSalas = "Controlador de Consulta de Salas"; // Simulación de controlador de consulta de salas, GRUPO B
-        List<String> butacas = controladorAsignadorButacas.asignarButacas(controladorDeConsultaSalas, funcion); // GRUPO B
-
-        List<Producto> boletos = controladorBoleto.generarBoleto(funcion, butacas);
-
         controladorFacturacion = new ControladorFacturacion();
 
         Cliente cliente = new Cliente("Juan","Pérez","12345678","juan.perez@example.com");
