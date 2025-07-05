@@ -1,4 +1,4 @@
-package Vistas;
+package com.cinemax.modulopeliculas.Vistas;
 
 import java.util.List;
 import java.util.Scanner;

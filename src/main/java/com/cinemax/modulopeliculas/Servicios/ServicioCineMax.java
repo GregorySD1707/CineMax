@@ -1,9 +1,10 @@
-package Servicios;
+package com.cinemax.modulopeliculas.Servicios;
 
 import java.util.List;
 
-import Modelos.CineMax;
-import Vistas.VistaCineMax;
+import com.cinemax.modulopeliculas.Controladores.Peliculas.ControladorPelicula;
+import com.cinemax.modulopeliculas.Modelos.CineMax;
+import com.cinemax.modulopeliculas.Vistas.VistaCineMax;
 
 public class ServicioCineMax {
 
@@ -14,7 +15,18 @@ public class ServicioCineMax {
             cerrado =vistaPaginaPrincipal.mostrar(opciones);
             switch (cerrado) {
                 case 1:
-                    // Aquí va la gestión de películas...
+                    // Gestión de películas - Delegamos al ControladorPelicula
+                    System.out.println("\n=== MÓDULO DE GESTIÓN DE PELÍCULAS ===");
+                    ControladorPelicula controladorPelicula = new ControladorPelicula();
+                    try {
+                        controladorPelicula.iniciar();
+                    } catch (Exception e) {
+                        System.err.println("Error en el módulo de películas: " + e.getMessage());
+                        e.printStackTrace();
+                    } finally {
+                        controladorPelicula.cerrar();
+                        System.out.println("Regresando al menú principal...\n");
+                    }
                     break;
                 case 2:
                     //Aquí va la gestión de salas...
