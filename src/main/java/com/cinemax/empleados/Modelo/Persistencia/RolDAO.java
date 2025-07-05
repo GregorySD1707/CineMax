@@ -200,4 +200,5 @@ public class RolDAO {
         rol.setActivo(rs.getBoolean("ROLACTIVO"));
         return rol;
     }
+
 }

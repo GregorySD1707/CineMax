@@ -59,7 +59,7 @@ public class    GestorUsuarios {
         usuarioExistente.setRol(nuevoRol);
 
         // Guardar el cambio
-        usuarioDAO.actualizarUsuario(usuarioExistente);
+        usuarioDAO.actualizarRol(idUsuario,nuevoRol.getId());
     }
     
     public Usuario buscarUsuarioPorCorreo(String correo) throws Exception {
@@ -113,4 +113,9 @@ public class    GestorUsuarios {
             usuarioDAO.eliminarUsuario(id);
         }
     }
-} 
+
+    public void actualizarEstado(Long idUsuario, Boolean nuevoEstado) throws Exception {
+        usuarioDAO.cambiarEstado(idUsuario,nuevoEstado);
+    }
+
+}

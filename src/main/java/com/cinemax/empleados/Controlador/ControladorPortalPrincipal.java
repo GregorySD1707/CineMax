@@ -54,17 +54,17 @@ public class ControladorPortalPrincipal {
         @FXML
         public void initialize() {
             gestorSesion = GestorSesionSingleton.getInstancia();
-            cargarDatos();
+//            cargarDatos();
          Usuario u = gestorSesion.getUsuarioActivo();
          lblNombreUsuario.setText(u.getNombreCompleto());
          lblRolUsuario.setText(u.getDescripcionRol());
 
-            System.out.println(gestorSesion.getUsuarioActivo().toString());
-                        System.out.println(gestorSesion.getUsuarioActivo().getRol().toString());
-            for (Permiso i : gestorSesion.getUsuarioActivo().getRol().getPermisos()) {
-                System.out.println(i);
-                
-            }
+//            System.out.println(gestorSesion.getUsuarioActivo().toString());
+//                        System.out.println(gestorSesion.getUsuarioActivo().getRol().toString());
+//            for (Permiso i : gestorSesion.getUsuarioActivo().getRol().getPermisos()) {
+//                System.out.println(i);
+//
+//            }
 //            // Controlar visibilidad de botones según permisos
 //            btnGestionUsuarios.setVisible(gestorSesion.tienePermiso(Permiso.GESTIONAR_USUARIO));
 //            btnVerReportes.setVisible(gestorSesion.tienePermiso(Permiso.GESTIONAR_REPORTES));
@@ -154,11 +154,6 @@ public class ControladorPortalPrincipal {
         }
 
 
-        public void cargarDatos() {
-            Usuario usuarioActivo = gestorSesion.getUsuarioActivo();
-            String mensaje = "¡Bienvenido, " + usuarioActivo.getNombreCompleto() + "! Rol: " + usuarioActivo.getDescripcionRol();
-        }
-
     public void onMiPerfil() {
         System.out.println("Navegar a Mi Perfil");
         // TODO: Implementar navegación a la pantalla de mi perfil, para gestion de datos
@@ -166,61 +161,3 @@ public class ControladorPortalPrincipal {
 }
 
 
-
-
-//     public class ControladorPortalPrincipal {
-
-//     // === FXML ===
-
-
-//     @FXML private ToggleButton btnCartelera, btnVentas, btnClientes,
-//                                 btnReportes, btnPersonal, btnConfig;
-
-//     @FXML private GridPane panelCentral;
-
-//     private final GestorSesionSingleton gestor = GestorSesionSingleton.getInstancia();
-
-//     @FXML
-//     public void initialize() {
-//         // Mostrar datos de la sesión
-//         Usuario u = gestor.getUsuarioActivo();
-//         lblNombreUsuario.setText(u.getNombreCompleto());
-//         lblRolUsuario.setText(u.getDescripcionRol());
-
-//         // // --- Control dinámico de permisos ---
-//         // ocultarSiNo(btnClientes,   Permiso.GESTIONAR_CLIENTE);
-//         // ocultarSiNo(btnPersonal,   Permiso.GESTIONAR_PERSONAL);
-//         // ocultarSiNo(btnReportes,   Permiso.GESTIONAR_REPORTES);
-//         // ocultarSiNo(btnConfig,     Permiso.GESTIONAR_SALA, Permiso.GESTIONAR_FUNCION);
-
-//         // Selecciona la vista por defecto
-//         btnCartelera.setSelected(true);
-//     }
-
-//     /* Simplifica: si no tiene alguno de los permisos, oculta (sin dejar hueco) */
-//     private void ocultarSiNo(Node nodo, Permiso permiso) {
-//         boolean visible = gestor.tienePermiso(permiso);
-//         nodo.setVisible(visible);
-//         nodo.setManaged(visible);           // evita huecos
-//     }
-
-//     // ==== handlers (ejemplos) ====
-//     @FXML private void irCartelera()    { /* cargar vista de cartelera en panelCentral */ }
-//     @FXML private void irVentas()       { /* … */ }
-//     @FXML private void irClientes()     { /* … */ }
-//     @FXML private void irReportes()     { /* … */ }
-//     @FXML private void irPersonal()     { /* … */ }
-//     @FXML private void irConfiguracion(){ /* … */ }
-
-//     @FXML
-//     private void onCerrarSesion(ActionEvent e) throws IOException {
-//         gestor.cerrarSesion();
-//         Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-//         Parent root = FXMLLoader.load(getClass().getResource("/Vista/PantallaLogin.fxml"));
-//         stage.setScene(new Scene(root));
-//     }
-
-//     @FXML private void onPerfil() {
-//         // abrir diálogo para cambiar contraseña, datos, etc.
-//     }
-// }

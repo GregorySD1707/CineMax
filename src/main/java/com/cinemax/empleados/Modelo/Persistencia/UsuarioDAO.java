@@ -157,7 +157,7 @@ public class UsuarioDAO {
 
     /* ===================================================== */
 
-    private void cambiarEstado(Long id, boolean activo) throws Exception {
+    public void cambiarEstado(Long id, boolean activo) throws Exception {
         String sql = """
             UPDATE USUARIO SET ACTIVO = %d,
                 FECHAULTIMAMODIFICACION = '%s'
@@ -201,5 +201,22 @@ public class UsuarioDAO {
         u.setRol(rol);
 
         return u;
+    }
+
+    public void actualizarEstado(Long idUsuario, Boolean nuevoEstado) {
+
+    }
+
+    public void actualizarRol(Long idUsuario, Long idRol) throws Exception {
+        String sql = """
+            UPDATE USUARIO SET IDROL = %d,
+                FECHAULTIMAMODIFICACION = '%s'
+            WHERE IDUSUARIO = %d
+            """.formatted(
+                idRol,
+                LocalDateTime.now().format(formatter),
+                idUsuario
+        );
+        db.insertarModificarEliminar(sql);
     }
 }

@@ -85,3 +85,24 @@
 /* --- Iconos y Contadores --- */
 .summary-ticket-count { -fx-background-color: #363B48; -fx-text-fill: #CBCCC6; }
 .summary-price { -fx-text-fill: #CBCCC6; -fx-font-weight: bold; }
+
+.toggle-button.switch {
+    -fx-background-color: #ccc;
+    -fx-background-radius: 20;
+    -fx-padding: 0 5 0 5; /* arriba derecha abajo izquierda */
+    -fx-alignment: CENTER_LEFT;
+    -fx-pref-width: 50;
+    -fx-pref-height: 25;
+}
+
+.toggle-button.switch:selected {
+    -fx-background-color: #4caf50;
+    -fx-padding: 0 5 0 5; /* arriba derecha abajo izquierda */
+    -fx-alignment: CENTER_RIGHT;
+}
+
+.toggle-button.switch > .text {
+    -fx-fill: #ffffff;                /* color opcional */
+    -fx-font-weight: bold;        /* texto en negrita */
+
+}
