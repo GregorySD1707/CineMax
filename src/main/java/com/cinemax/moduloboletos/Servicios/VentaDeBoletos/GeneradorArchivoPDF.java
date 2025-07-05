@@ -37,6 +37,8 @@ public class GeneradorArchivoPDF implements ServicioGeneradorArchivo {
                 contentStream.showText("Cliente: " + cliente.getNombre() + " " + cliente.getApellido());
                 contentStream.newLineAtOffset(0, -20);
                 contentStream.showText("Cédula: " + cliente.getCedula());
+                contentStream.newLineAtOffset(0, -20);
+                contentStream.showText("Correo: " + cliente.getCorreoElectronico());
                 contentStream.newLineAtOffset(0, -30);
 
                 // Detalle de boletos

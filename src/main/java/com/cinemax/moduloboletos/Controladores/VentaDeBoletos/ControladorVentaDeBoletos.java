@@ -28,7 +28,7 @@ public class ControladorVentaDeBoletos {
                                                                                                                 // ["A1",
                                                                                                                 // "A2"]
         List<Producto> boletos = controladorBoleto.generarBoleto(funcion, butacas);
-        Cliente cliente = new Cliente("Juan", "Pérez", "12345678", "juan.perez@example.com"); // Cliente quemado
+        Cliente cliente = new Cliente("Juan", "Pérez", "12345678", "juan.perez@gmail.com"); // Cliente quemado
 
         // Generar factura
         Factura factura = controladorFacturacion.generarFactura(boletos, cliente);

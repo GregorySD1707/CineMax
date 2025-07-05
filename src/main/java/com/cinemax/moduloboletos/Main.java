@@ -82,7 +82,7 @@ public class Main extends Application {
             // Datos quemados para prueba
             String funcion = "Avengers: Endgame - Sala 3D - 20:00";
             List<String> butacas = List.of("A1", "A2");
-            Cliente cliente = new Cliente("Juan", "Pérez", "12345678", "juan@example.com");
+            Cliente cliente = new Cliente("Juan", "Pérez", "12345678", "juan@gmail.com");
 
             // Generar boletos
             ServicioGeneradorBoleto generadorBoleto = new ServicioGeneradorBoleto();
