@@ -13,17 +13,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
-                try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            System.out.println("✅ Driver JDBC SQL Server cargado correctamente.");
-        } catch (ClassNotFoundException e) {
-            System.out.println("❌ No se encontró el driver JDBC.");
-            e.printStackTrace();
-        }
-
-        
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/Vista/PantallaLogin.fxml"));
+                
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/Vista/empleados/PantallaLogin.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 500);
 
 

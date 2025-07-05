@@ -6,10 +6,10 @@ import com.cinemax.empleados.Modelo.Persistencia.RolDAO;
 import java.util.List;
 import java.util.Set;
 
-public class GestorRoles {
+public class ServicioRoles {
     private RolDAO rolDAO;
     
-    public GestorRoles() {
+    public ServicioRoles() {
         this.rolDAO = new RolDAO();
     }
     

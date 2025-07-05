@@ -3,11 +3,11 @@ package com.cinemax.empleados.Servicios;
 import com.cinemax.empleados.Modelo.Entidades.Usuario;
 import com.cinemax.empleados.Modelo.Persistencia.UsuarioDAO;
 
-public class GestorPerfilUsuario {
+public class ServicioPerfilUsuario {
     private ValidadorUsuario validador;
     private UsuarioDAO usuarioDAO;
     
-    public GestorPerfilUsuario() {
+    public ServicioPerfilUsuario() {
         this.validador = new ValidadorUsuario();
         this.usuarioDAO = new UsuarioDAO();
     }

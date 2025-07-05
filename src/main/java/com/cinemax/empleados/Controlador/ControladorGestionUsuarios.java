@@ -1,12 +1,12 @@
 package com.cinemax.empleados.Controlador;
 
-import com.cinemax.empleados.Servicios.GestorRoles;
+import com.cinemax.empleados.Servicios.ServicioRoles;
 import com.cinemax.empleados.Servicios.GestorSesionSingleton;
 import com.cinemax.empleados.Modelo.Entidades.Usuario;
 import com.cinemax.empleados.Modelo.Entidades.*;
 
 
-import com.cinemax.empleados.Servicios.GestorUsuarios;
+import com.cinemax.empleados.Servicios.ServicioUsuarios;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,17 +18,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
-import java.util.concurrent.ForkJoinPool;
 
-import javafx.fxml.FXML;
 import javafx.util.StringConverter;
 
 public class ControladorGestionUsuarios {
@@ -44,24 +38,26 @@ public class ControladorGestionUsuarios {
     @FXML private TableColumn<Usuario, String> colEmail;
     @FXML private TableColumn<Usuario, Rol> colRol;
 //    @FXML private TableColumn<Usuario, Void> colEditar;
-    private GestorUsuarios gestorUsuarios;
 
     private ObservableList<Rol> rolesObservable;      // lista para el combo
-    private GestorRoles gestorRoles;
+
+    private ServicioUsuarios servicioUsuarios;
+
+    private ServicioRoles servicioRoles;
     private GestorSesionSingleton gestorSesion;
 
 
     @FXML
     public void initialize() {
         // Configurar columnas…
-        gestorUsuarios = new GestorUsuarios();
-        gestorRoles = new GestorRoles();
+        servicioUsuarios = new ServicioUsuarios();
+        servicioRoles = new ServicioRoles();
 
 
         gestorSesion = GestorSesionSingleton.getInstancia();
-        //        Usuario use = gestorSesion.getUsuarioActivo();
-//        lblNombreUsuario.setText(use.getNombreCompleto());
-//        lblRolUsuario.setText(use.getDescripcionRol());
+        Usuario use = gestorSesion.getUsuarioActivo();
+        lblNombreUsuario.setText(use.getNombreCompleto());
+        lblRolUsuario.setText(use.getDescripcionRol());
         colActivo.setCellValueFactory(new PropertyValueFactory<>("activo"));
         colUsuario.setCellValueFactory(new PropertyValueFactory<>("nombreUsuario"));
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombreCompleto"));
@@ -88,7 +84,7 @@ public class ControladorGestionUsuarios {
             Usuario usuarioActual = gestorSesion.getUsuarioActivo();
 
             // 2.  Filtras la lista que viene de la BD
-            List<Usuario> soloOtros = gestorUsuarios.listarUsuarios()
+            List<Usuario> soloOtros = servicioUsuarios.listarUsuarios()
                     .stream()
                     .filter(u -> !u.getId().equals(usuarioActual.getId())) // ≠ usuario conectado
                     .toList();                                             // Java 16+; o collect(Collectors.toList())
@@ -116,7 +112,7 @@ public class ControladorGestionUsuarios {
 
                         // ⇣  Si manejas BD o servicio, persiste aquí
                         try {
-                            gestorUsuarios.actualizarEstado(u.getId(), newVal);
+                            servicioUsuarios.actualizarEstado(u.getId(), newVal);
                         } catch (Exception e) {
                             throw new RuntimeException(e);
                         }
@@ -142,7 +138,7 @@ public class ControladorGestionUsuarios {
 
         /* ----- 1. cargar roles una sola vez ----- */
         try {
-            rolesObservable = FXCollections.observableArrayList(gestorRoles.listarRoles());
+            rolesObservable = FXCollections.observableArrayList(servicioRoles.listarRoles());
         } catch (Exception e) {
             e.printStackTrace();
             rolesObservable = FXCollections.observableArrayList();
@@ -169,7 +165,7 @@ public class ControladorGestionUsuarios {
                 if (nuevo != null && !nuevo.equals(u.getRol())) {
                     u.setRol(nuevo);                         // 1) actualiza modelo
                     try {
-                        gestorUsuarios.actualizarRolUsuario(u.getId(), nuevo); // 2) guarda en BD
+                        servicioUsuarios.actualizarRolUsuario(u.getId(), nuevo); // 2) guarda en BD
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
@@ -195,7 +191,7 @@ public class ControladorGestionUsuarios {
     @FXML
     private void onCerrarSesion(ActionEvent event) {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/PantallaLogin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/empleados/PantallaLogin.fxml"));
         try {
             Parent root = loader.load();
 

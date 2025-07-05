@@ -1,4 +1,4 @@
-module com.cinemax.moduloboletos {
+module com.cinemax.empleados {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;

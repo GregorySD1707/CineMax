@@ -60,7 +60,7 @@ public class Rol {
         this.descripcion = descripcion;
     }
 
-    public boolean isActivo() {
+    public boolean estaActivo() {
         return activo;
     }
 

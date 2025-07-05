@@ -15,9 +15,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import com.cinemax.empleados.Servicios.GestorSesionSingleton;
 
-import java.io.IOException;
-import java.net.URL;
-
 public class ControladorLogin {
 
     @FXML
@@ -50,7 +47,7 @@ public class ControladorLogin {
         
 
             //FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/cinemax/moduloboletos/vistas/VentaDeBoletos/datos-cliente-view.fxml"));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/PantallaPortalPrincipal.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/empleados/PantallaPortalPrincipal.fxml"));
             try {
                 Parent root = loader.load();
 
@@ -84,7 +81,7 @@ e.printStackTrace();            }
         }
 
         try {
-            return gestorSesionSingleton.login(nomUsuario, password);
+            return gestorSesionSingleton.iniciarSesion(nomUsuario, password);
         } catch (Exception e) {
             return false;
         }

@@ -10,15 +10,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.concurrent.ForkJoinPool;
 
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -96,7 +92,7 @@ public class ControladorPortalPrincipal {
         private void onGestionUsuarios(ActionEvent event) {
             System.out.println("Navegar a Gestión de Usuarios");
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/PantallaGestionDeUsuarios.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/empleados/PantallaGestionDeUsuarios.fxml"));
             try {
                 Parent root = loader.load();
 
@@ -132,10 +128,10 @@ public class ControladorPortalPrincipal {
         private void onCerrarSesion(ActionEvent event) {
             System.out.println("Cerrar sesión y volver al login");
             // TODO: Implementar cerrar sesión y volver a la pantalla de login
-            URL url = getClass().getResource("/Vista/PantallaPortalPrincipal.fxml");
+            URL url = getClass().getResource("/Vista/empleados/PantallaPortalPrincipal.fxml");
             System.out.println(url); // Si imprime null, el archivo no se encuentra
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/PantallaLogin.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vista/empleados/PantallaLogin.fxml"));
             try {
                 Parent root = loader.load();
 

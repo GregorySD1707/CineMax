@@ -10,11 +10,11 @@ public class GestorSesionSingleton {
     private static GestorSesionSingleton gestorSesion;
     private Usuario usuarioActivo;
     private UsuarioDAO usuarioDAO;
-    private GestorRoles gestorRoles;
+    private ServicioRoles servicioRoles;
 
     private GestorSesionSingleton() {
         this.usuarioDAO = new UsuarioDAO();
-        this.gestorRoles = new GestorRoles();
+        this.servicioRoles = new ServicioRoles();
     }
 
     public static synchronized GestorSesionSingleton getInstancia() {
@@ -25,7 +25,7 @@ public class GestorSesionSingleton {
     }
 
     
-    public boolean login(String nombreUsuario, String clave) throws Exception {
+    public boolean iniciarSesion(String nombreUsuario, String clave) throws Exception {
         if (nombreUsuario == null || clave == null || 
             nombreUsuario.trim().isEmpty() || clave.trim().isEmpty()) {
             return false;
@@ -36,7 +36,7 @@ public class GestorSesionSingleton {
         
         if (usuario != null && usuario.isActivo() && usuario.verificarClave(clave)) {
             // // Cargar rol completo con permisos
-            Rol rolCompleto = gestorRoles.obtenerRolPorIdUsuario(usuario.getId());
+            Rol rolCompleto = servicioRoles.obtenerRolPorIdUsuario(usuario.getId());
             usuario.setRol(rolCompleto);
 
             this.usuarioActivo = usuario;

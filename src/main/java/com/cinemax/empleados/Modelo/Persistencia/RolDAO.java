@@ -37,7 +37,7 @@ public class RolDAO {
     public void crearRol(Rol rol) throws Exception {
         String sql = "INSERT INTO ROL (IDROL, NOMBRE, DESCRIPCION, ROLACTIVO) " +
                 "VALUES (" + rol.getId() + ", '" + rol.getNombre() + "', " +
-                "'" + rol.getDescripcion() + "', " + (rol.isActivo() ? "1" : "0") + ")";
+                "'" + rol.getDescripcion() + "', " + (rol.estaActivo() ? "1" : "0") + ")";
 
         conexionBase.insertarModificarEliminar(sql);
 
@@ -52,7 +52,7 @@ public class RolDAO {
         String sql = "UPDATE ROL SET " +
                 "NOMBRE = '" + rol.getNombre() + "', " +
                 "DESCRIPCION = '" + rol.getDescripcion() + "', " +
-                "ROLACTIVO = " + (rol.isActivo() ? "1" : "0") + " " +
+                "ROLACTIVO = " + (rol.estaActivo() ? "1" : "0") + " " +
                 "WHERE IDROL = " + rol.getId();
 
         conexionBase.insertarModificarEliminar(sql);

@@ -4,11 +4,11 @@ import com.cinemax.empleados.Modelo.Entidades.*;
 import com.cinemax.empleados.Modelo.Persistencia.UsuarioDAO;
 import java.util.List;
 
-public class    GestorUsuarios {
+public class ServicioUsuarios {
     private ValidadorUsuario validador;
     private UsuarioDAO usuarioDAO;
     
-    public GestorUsuarios() {
+    public ServicioUsuarios() {
         this.validador = new ValidadorUsuario();
         this.usuarioDAO = new UsuarioDAO();
     }
